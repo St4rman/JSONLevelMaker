@@ -139,6 +139,24 @@ public class SceneToJson : MonoBehaviour
             shouldNetwork = false;
         }
     }
+
+    [Serializable]
+    class TrapblockInfo : GameObjectPrimitive
+    {
+        public TrapblockInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
     [Serializable]
     class LightInfo
     {
@@ -162,6 +180,7 @@ public class SceneToJson : MonoBehaviour
             springs = new List<SpringInfo>();
             speedBlockList = new List<SpeedblockInfo>();
             bridgeList = new List<BridgeInfo>();
+            trapBlockList = new List<TrapblockInfo>();
         }
         public int getListCount(){
             return primitiveGameObject.Count;
@@ -177,7 +196,7 @@ public class SceneToJson : MonoBehaviour
         public List<SpringInfo> springs;
         public List<SpeedblockInfo> speedBlockList;
         public List<BridgeInfo> bridgeList;
-        
+        public List<TrapblockInfo> trapBlockList;
     }
 
     Stage level;
@@ -196,6 +215,7 @@ public class SceneToJson : MonoBehaviour
         GameObject SpringR       = GameObject.Find("Springs");
         GameObject SpeedblockR       = GameObject.Find("SpeedBlocks");
         GameObject BridgeR  =   GameObject.Find("Bridges");
+        GameObject TrapBlockR = GameObject.Find("TrapBlocks");
 
         if (GroundR == null || Start == null || End == null || OscR == null || CPR == null || DP == null || HarmOscR == null || LightR == null || SpringR == null || SpeedblockR== null)
         {
@@ -213,6 +233,7 @@ public class SceneToJson : MonoBehaviour
         CreateSprings(SpringR.transform);
         CreateSpeedblocks(SpeedblockR.transform);
         CreatBridges (BridgeR.transform);
+        CreateTrapBlocks(TrapBlockR.transform);
 
         Debug.Log("Loaded!");
         string json = JsonUtility.ToJson(level);
@@ -491,7 +512,37 @@ public class SceneToJson : MonoBehaviour
             level.bridgeList.Add(bridge);
         }
     }
+    void CreateTrapBlocks(Transform root)
+    {
+        foreach (Trapblock child in root.GetComponentsInChildren<Trapblock>())
+        {
+            TrapblockInfo trapblock = new TrapblockInfo(
+            GetMeshName(child.gameObject),
+            child.transform.localScale,
+            child.transform.rotation,
+            child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
 
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                trapblock.volumeType = "box";
+                trapblock.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                trapblock.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                trapblock.volumeType = "sphere";
+                trapblock.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                trapblock.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Trapblock Added");
+            level.trapBlockList.Add(trapblock);
+        }
+
+    }
     string GetMeshName(GameObject obj)
     {
         string meshName = "";

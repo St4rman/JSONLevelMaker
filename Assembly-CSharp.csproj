@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\DirectionGizmo.cs" />
     <Compile Include="Assets\Scripts\Bridge.cs" />
     <Compile Include="Assets\Scripts\Spring.cs" />
+    <Compile Include="Assets\Scripts\Trapblock.cs" />
     <Compile Include="Assets\Scripts\OscPlat.cs" />
     <Compile Include="Assets\Scripts\MeshSelector.cs" />
     <Compile Include="Assets\JsonConverter\SceneToJson.cs" />

@@ -164,13 +164,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43489704}
-  - component: {fileID: 43489709}
-  - component: {fileID: 43489708}
   - component: {fileID: 43489707}
   - component: {fileID: 43489706}
   - component: {fileID: 43489705}
+  - component: {fileID: 43489709}
+  - component: {fileID: 43489708}
   m_Layer: 0
-  m_Name: Ground (14)
+  m_Name: Trapblock(6)
   m_TagString: kinematic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.5, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430893440}
+  m_Father: {fileID: 782629513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &43489705
 Rigidbody:
@@ -298,11 +298,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 43489703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e31133799287db4d959046fde64b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!1 &60509217
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,13 +959,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 330013329}
-  - component: {fileID: 330013334}
   - component: {fileID: 330013333}
   - component: {fileID: 330013332}
   - component: {fileID: 330013331}
   - component: {fileID: 330013330}
+  - component: {fileID: 330013334}
   m_Layer: 0
-  m_Name: Ground (11)
+  m_Name: Trapblock(2)
   m_TagString: kinematic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -986,7 +984,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.5, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430893440}
+  m_Father: {fileID: 782629513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &330013330
 Rigidbody:
@@ -1095,11 +1093,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 330013328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e31133799287db4d959046fde64b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!4 &345998282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
@@ -1688,13 +1684,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479417584}
-  - component: {fileID: 479417589}
   - component: {fileID: 479417588}
   - component: {fileID: 479417587}
   - component: {fileID: 479417586}
   - component: {fileID: 479417585}
+  - component: {fileID: 479417589}
   m_Layer: 0
-  m_Name: Ground (12)
+  m_Name: Trapblock(1)
   m_TagString: kinematic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,7 +1709,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.5, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430893440}
+  m_Father: {fileID: 782629513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &479417585
 Rigidbody:
@@ -1822,11 +1818,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 479417583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e31133799287db4d959046fde64b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!1001 &491456294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1857,7 +1851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230967217760948489, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: position.y
-      value: 162
+      value: 161
       objectReference: {fileID: 0}
     - target: {fileID: 2230967217760948489, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: position.z
@@ -1873,7 +1867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230967217760948489, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: dimensions.x
-      value: 39
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2230967217760948489, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: dimensions.y
@@ -1881,7 +1875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230967217760948489, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: dimensions.z
-      value: 39
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 2230967217760948489, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: refreshThingsPlease
@@ -1889,7 +1883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: m_LocalScale.x
-      value: 39
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: m_LocalScale.y
@@ -1897,7 +1891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: m_LocalScale.z
-      value: 39
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1905,7 +1899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 162
+      value: 161
       objectReference: {fileID: 0}
     - target: {fileID: 2371678568046452698, guid: af71c6522d36209478ff36610b5abf89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3085,6 +3079,43 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782247858}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &782629512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782629513}
+  m_Layer: 0
+  m_Name: TrapBlocks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &782629513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782629512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 479417584}
+  - {fileID: 330013329}
+  - {fileID: 1470501528}
+  - {fileID: 1686297277}
+  - {fileID: 1191239891}
+  - {fileID: 43489704}
+  m_Father: {fileID: 832813049}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803408643
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,6 +3475,7 @@ Transform:
   - {fileID: 1510949436}
   - {fileID: 5936399}
   - {fileID: 803408644}
+  - {fileID: 782629513}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841825449
@@ -4206,13 +4238,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191239891}
-  - component: {fileID: 1191239896}
   - component: {fileID: 1191239895}
   - component: {fileID: 1191239894}
   - component: {fileID: 1191239893}
   - component: {fileID: 1191239892}
+  - component: {fileID: 1191239896}
   m_Layer: 0
-  m_Name: Ground (13)
+  m_Name: Trapblock(5)
   m_TagString: kinematic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4231,7 +4263,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.5, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430893440}
+  m_Father: {fileID: 782629513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1191239892
 Rigidbody:
@@ -4340,11 +4372,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191239890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e31133799287db4d959046fde64b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!1 &1200837284
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,16 +5077,10 @@ Transform:
   - {fileID: 1691276400}
   - {fileID: 60509218}
   - {fileID: 454947727}
-  - {fileID: 1686297277}
-  - {fileID: 1470501528}
   - {fileID: 1913471615}
   - {fileID: 1807418763}
   - {fileID: 1829306601}
   - {fileID: 760177636}
-  - {fileID: 330013329}
-  - {fileID: 479417584}
-  - {fileID: 1191239891}
-  - {fileID: 43489704}
   - {fileID: 891765272}
   - {fileID: 841825450}
   - {fileID: 864996237}
@@ -5088,13 +5112,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470501528}
-  - component: {fileID: 1470501533}
   - component: {fileID: 1470501532}
   - component: {fileID: 1470501531}
   - component: {fileID: 1470501530}
   - component: {fileID: 1470501529}
+  - component: {fileID: 1470501533}
   m_Layer: 0
-  m_Name: Ground (05)
+  m_Name: Trapblock(3)
   m_TagString: kinematic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5113,7 +5137,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.5, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430893440}
+  m_Father: {fileID: 782629513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1470501529
 Rigidbody:
@@ -5222,11 +5246,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470501527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e31133799287db4d959046fde64b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!1 &1477136262
 GameObject:
   m_ObjectHideFlags: 0
@@ -6451,13 +6473,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686297277}
-  - component: {fileID: 1686297282}
   - component: {fileID: 1686297281}
   - component: {fileID: 1686297280}
   - component: {fileID: 1686297279}
   - component: {fileID: 1686297278}
+  - component: {fileID: 1686297282}
   m_Layer: 0
-  m_Name: Ground (04)
+  m_Name: Trapblock(4)
   m_TagString: kinematic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6476,7 +6498,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.5, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430893440}
+  m_Father: {fileID: 782629513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1686297278
 Rigidbody:
@@ -6585,11 +6607,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686297276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e31133799287db4d959046fde64b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!1 &1691276399
 GameObject:
   m_ObjectHideFlags: 0
