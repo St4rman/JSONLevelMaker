@@ -2225,11 +2225,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 613117304}
-  - component: {fileID: 613117309}
   - component: {fileID: 613117308}
   - component: {fileID: 613117307}
   - component: {fileID: 613117306}
   - component: {fileID: 613117305}
+  - component: {fileID: 613117309}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: kinematic
@@ -2359,11 +2359,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 613117303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f539d05465bb4ebec3ae0af301c60, type: 3}
+  m_Script: {fileID: 11500000, guid: b75d6ef7e2360ad4db04755ccb737c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: 0
-  extension: 1
 --- !u!1 &636683887
 GameObject:
   m_ObjectHideFlags: 0
