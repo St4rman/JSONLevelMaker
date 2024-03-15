@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\OscPlat.cs" />
     <Compile Include="Assets\Scripts\MeshSelector.cs" />
     <Compile Include="Assets\JsonConverter\SceneToJson.cs" />
+    <Compile Include="Assets\Scripts\SwingingObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
