@@ -73,6 +73,7 @@ public class SceneToJson : MonoBehaviour
         
     }
 
+    [Serializable]
     class Swinging : GameObjectPrimitive {
         public Swinging(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius, float tPeriod, float pcooldown, float pwait, float pRadius, bool pAxisChange, bool pDirectionChange)
         {
