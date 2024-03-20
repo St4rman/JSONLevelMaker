@@ -354,8 +354,6 @@ public class SceneToJson : MonoBehaviour
         CreateRayEnemys (RayEnemyR.transform);
         CreateRayEnemyTrigger(RayTriR.transform);
         CreateBridgeTrigger(BridgeTriR.transform);
-        // testing that the swinging list has the objects and data
-        Debug.Log(level.swingingList[0].radius.ToString());
 
         Debug.Log("Loaded!");
         string json = JsonUtility.ToJson(level);
