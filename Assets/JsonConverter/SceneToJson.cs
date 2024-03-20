@@ -74,6 +74,36 @@ public class SceneToJson : MonoBehaviour
     }
 
     [Serializable]
+    class Swinging : GameObjectPrimitive {
+        public Swinging(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius, float tPeriod, float pcooldown, float pwait, float pRadius, bool pAxisChange, bool pDirectionChange)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = true;
+            timePeriod = tPeriod;
+            cooldown = pcooldown;
+            waitDelay = pwait;
+            radius = pRadius;
+            changeAxis = pAxisChange;
+            changeDirection = pDirectionChange;
+        }
+        public float timePeriod;
+        public float cooldown;
+        public float waitDelay;
+        public float radius;
+        public bool changeAxis;
+        public bool changeDirection;
+
+    }
+
+    [Serializable]
     class SpringInfo : GameObjectPrimitive
     {
         public SpringInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius,
@@ -105,6 +135,114 @@ public class SceneToJson : MonoBehaviour
     }
 
     [Serializable]
+    class SpeedblockInfo : GameObjectPrimitive
+    {
+        public SpeedblockInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
+
+    [Serializable]
+    class BridgeInfo : GameObjectPrimitive
+    {
+        public BridgeInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
+
+    [Serializable]
+    class TrapblockInfo : GameObjectPrimitive
+    {
+        public TrapblockInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
+
+    [Serializable]
+    class RayenemyInfo : GameObjectPrimitive
+    {
+        public RayenemyInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
+
+    [Serializable]
+    class RayEnemyTriggerInfo : GameObjectPrimitive
+    {
+        public RayEnemyTriggerInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
+
+    [Serializable]
+    class BridgeTriggerInfo : GameObjectPrimitive
+    {
+        public BridgeTriggerInfo(string pMesh, Vector3 dims, Quaternion rot, Vector3 pos, string phType, string volType, Vector3 colExt, float colRadius)
+        {
+            mesh = pMesh;
+            dimensions = dims;
+            rotation = rot;
+            position = pos;
+            inverseMass = 0.0f;
+            physicType = phType;
+            colliderExtents = colExt;
+            colliderRadius = colRadius;
+            position = pos;
+            shouldNetwork = false;
+        }
+    }
+
+    [Serializable]
     class LightInfo
     {
         public Vector3 position;
@@ -125,6 +263,13 @@ public class SceneToJson : MonoBehaviour
             checkPoints =           new List<Vector3>();
             pointLights = new List<LightInfo>();
             springs = new List<SpringInfo>();
+            speedBlockList = new List<SpeedblockInfo>();
+            bridgeList = new List<BridgeInfo>();
+            trapBlockList = new List<TrapblockInfo>();
+            rayenemyList = new List<RayenemyInfo>();
+            rayenemytriList = new List<RayEnemyTriggerInfo>();
+            bridgetriList = new List<BridgeTriggerInfo>();
+            swingingList = new List<Swinging>();
         }
         public int getListCount(){
             return primitiveGameObject.Count;
@@ -136,9 +281,16 @@ public class SceneToJson : MonoBehaviour
         public List<GameObjectPrimitive> primitiveGameObject;
         public List<Oscillaters> oscList;
         public List<Oscillaters> harmOscList;
+        public List<Swinging> swingingList;
         public List<LightInfo> pointLights;
         public List<SpringInfo> springs;
-        
+        public List<SpeedblockInfo> speedBlockList;
+        public List<BridgeInfo> bridgeList;
+        public List<TrapblockInfo> trapBlockList;
+        public List<RayenemyInfo> rayenemyList;
+        public List<RayEnemyTriggerInfo> rayenemytriList;
+        public List<BridgeTriggerInfo> bridgetriList;
+
     }
 
     Stage level;
@@ -153,10 +305,18 @@ public class SceneToJson : MonoBehaviour
         GameObject CPR      = GameObject.Find("Checkpoints");
         GameObject DP       = GameObject.Find("DeathPlane");
         GameObject HarmOscR       = GameObject.Find("HarmfulOscillators");
+        GameObject SwingObjs       = GameObject.Find("SwingingObjects");
         GameObject LightR       = GameObject.Find("Lights");
         GameObject SpringR       = GameObject.Find("Springs");
+        GameObject SpeedblockR       = GameObject.Find("SpeedBlocks");
+        GameObject BridgeR  =   GameObject.Find("Bridges");
+        GameObject TrapBlockR = GameObject.Find("TrapBlocks");
+        GameObject RayEnemyR = GameObject.Find("RayEnemys");
+        GameObject RayTriR = GameObject.Find("EnemyTrigger");
+        GameObject BridgeTriR = GameObject.Find("BridgeTrigger");
 
-        if(GroundR == null || Start == null || End == null || OscR == null || CPR == null || DP == null || HarmOscR == null)
+
+        if (GroundR == null || Start == null || End == null || OscR == null || CPR == null || DP == null || HarmOscR == null || LightR == null || SpringR == null || SpeedblockR== null || BridgeR == null || TrapBlockR == null || RayEnemyR == null || RayTriR == null || BridgeTriR == null)
         {
             Debug.LogError("No essestial objects. Check for ground, start, or end");
             return;
@@ -167,16 +327,25 @@ public class SceneToJson : MonoBehaviour
         CreateGroundObjects     (GroundR.transform);
         CreateOscillatorObjects (OscR.transform);
         CreateHarmfulOscillatorObjects(HarmOscR.transform);
+        CreateSwingingObjects(SwingObjs.transform);
         CreateCheckPoints(CPR.transform);
-        // CreateLights(LightR.transform);
-        // CreateSprings(SpringR.transform);
+        CreateLights(LightR.transform);
+        CreateSprings(SpringR.transform);
+        CreateSpeedblocks(SpeedblockR.transform);
+        CreatBridges (BridgeR.transform);
+        CreateTrapBlocks(TrapBlockR.transform);
+        CreateRayEnemys (RayEnemyR.transform);
+        CreateRayEnemyTrigger(RayTriR.transform);
+        CreateBridgeTrigger(BridgeTriR.transform);
+        // testing that the swinging list has the objects and data
+        Debug.Log(level.swingingList[0].radius.ToString());
 
         Debug.Log("Loaded!");
         string json = JsonUtility.ToJson(level);
         WriteJson(json);
 
     }
-
+    
 
     private void WriteJson(string json){
         File.WriteAllText(Application.dataPath + "/" + levelName + ".json", json);
@@ -268,6 +437,55 @@ public class SceneToJson : MonoBehaviour
             Debug.Log("Added Oscillator");
         }
    }
+
+    private void CreateSwingingObjects(Transform SwingingRoot)
+    {
+        if (SwingingRoot.childCount == 0)
+        {
+            Debug.Log("No swinging objects in level");
+            return;
+        }
+
+        foreach (Transform child in SwingingRoot)
+        {
+            SwingingObject data = child.GetComponent<SwingingObject>();
+
+            Swinging tempSwing = new Swinging(
+                GetMeshName(child.gameObject),
+                data.dimensions,
+                child.rotation,
+                data.position,
+                "",
+                child.GetComponent<Collider>().GetType().ToString(),
+                new Vector3(0, 0, 0),
+                0,
+                data.timePeriod,
+                data.cooldown,
+                data.waitDelay,
+                data.radius,
+                data.changeAxis,
+                data.changeDirection
+            );
+
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                tempSwing.volumeType = "box";
+                tempSwing.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                tempSwing.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                tempSwing.volumeType = "sphere";
+                tempSwing.colliderRadius = child.GetComponent<SphereCollider>().radius;
+                tempSwing.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+            level.swingingList.Add(tempSwing);
+            Debug.Log("Added swinging object");
+        }
+    }
 
     private void CreateHarmfulOscillatorObjects(Transform harmfulOscillatorRoot)
     {
@@ -384,6 +602,192 @@ public class SceneToJson : MonoBehaviour
             level.springs.Add(spring);
         }
 
+    }
+
+
+
+    void CreateSpeedblocks(Transform root)
+    {
+        foreach (Speedblock child in root.GetComponentsInChildren<Speedblock>())
+        {
+            SpeedblockInfo speedblock = new SpeedblockInfo(
+            GetMeshName(child.gameObject),
+            child.transform.localScale,
+            child.transform.rotation,
+            child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
+
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                speedblock.volumeType = "box";
+                speedblock.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                speedblock.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                speedblock.volumeType = "sphere";
+                speedblock.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                speedblock.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Speedblock Added");
+            level.speedBlockList.Add(speedblock);
+        }
+
+    }
+
+    void CreatBridges(Transform root)
+    {
+        foreach (Bridge child in root.GetComponentsInChildren<Bridge>())
+        {
+            BridgeInfo bridge = new BridgeInfo(GetMeshName(child.gameObject),
+                child.transform.localScale,
+                child.transform.rotation,
+                child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                bridge.volumeType = "box";
+                bridge.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                bridge.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                bridge.volumeType = "sphere";
+                bridge.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                bridge.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Bridge Added");
+            level.bridgeList.Add(bridge);
+        }
+    }
+    void CreateTrapBlocks(Transform root)
+    {
+        foreach (Trapblock child in root.GetComponentsInChildren<Trapblock>())
+        {
+            TrapblockInfo trapblock = new TrapblockInfo(
+            GetMeshName(child.gameObject),
+            child.transform.localScale,
+            child.transform.rotation,
+            child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
+
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                trapblock.volumeType = "box";
+                trapblock.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                trapblock.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                trapblock.volumeType = "sphere";
+                trapblock.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                trapblock.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Trapblock Added");
+            level.trapBlockList.Add(trapblock);
+        }
+    }
+
+    void CreateRayEnemys(Transform root)
+    {
+        foreach (RayEnemy child in root.GetComponentsInChildren<RayEnemy>())
+        {
+            RayenemyInfo rayenemy = new RayenemyInfo(
+            GetMeshName(child.gameObject),
+            child.transform.localScale,
+            child.transform.rotation,
+            child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
+
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                rayenemy.volumeType = "box";
+                rayenemy.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                rayenemy.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                rayenemy.volumeType = "sphere";
+                rayenemy.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                rayenemy.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Rayenemy Added");
+            level.rayenemyList.Add(rayenemy);
+        }
+    }
+
+    void CreateRayEnemyTrigger(Transform root)
+    {
+        foreach (RayEnemyTrigger child in root.GetComponentsInChildren<RayEnemyTrigger>())
+        {
+            RayEnemyTriggerInfo rayenemytri = new RayEnemyTriggerInfo(
+            GetMeshName(child.gameObject),
+            child.transform.localScale,
+            child.transform.rotation,
+            child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
+
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                rayenemytri.volumeType = "box";
+                rayenemytri.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                rayenemytri.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                rayenemytri.volumeType = "sphere";
+                rayenemytri.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                rayenemytri.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Trapblock Added");
+            level.rayenemytriList.Add(rayenemytri);
+        }
+    }
+
+    void CreateBridgeTrigger(Transform root)
+    {
+        foreach (BridgeTrigger child in root.GetComponentsInChildren<BridgeTrigger>())
+        {
+            BridgeTriggerInfo bridgetri = new BridgeTriggerInfo(
+            GetMeshName(child.gameObject),
+            child.transform.localScale,
+            child.transform.rotation,
+            child.transform.position, child.tag, child.GetComponent<Collider>().GetType().ToString(), new Vector3(0, 0, 0), 0);
+
+            if (child.GetComponent<Collider>().GetType() == typeof(BoxCollider))
+            {
+                bridgetri.volumeType = "box";
+                bridgetri.colliderExtents = Vector3.Scale(child.transform.localScale, child.GetComponent<BoxCollider>().size);
+                bridgetri.colliderRadius = 0;
+                // Debug.Log("box");
+
+            }
+            else if (child.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+            {
+                bridgetri.volumeType = "sphere";
+                bridgetri.colliderRadius = child.transform.localScale.x * child.GetComponent<SphereCollider>().radius;
+                bridgetri.colliderExtents = new Vector3(0, 0, 0);
+                // Debug.Log("circle");
+            }
+
+            Debug.Log("Trapblock Added");
+            level.bridgetriList.Add(bridgetri);
+        }
     }
 
 
