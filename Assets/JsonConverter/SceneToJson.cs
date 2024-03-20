@@ -15,6 +15,7 @@ using System.IO;
 public class SceneToJson : MonoBehaviour
 {
     [SerializeField] string levelName;
+
     [Serializable]
     class GameObjectPrimitive { 
         public GameObjectPrimitive() { }
@@ -125,6 +126,7 @@ public class SceneToJson : MonoBehaviour
             checkPoints =           new List<Vector3>();
             pointLights = new List<LightInfo>();
             springs = new List<SpringInfo>();
+            medalInfo = new MedalsInfo();
         }
         public int getListCount(){
             return primitiveGameObject.Count;
@@ -138,7 +140,16 @@ public class SceneToJson : MonoBehaviour
         public List<Oscillaters> harmOscList;
         public List<LightInfo> pointLights;
         public List<SpringInfo> springs;
+        public MedalsInfo medalInfo;
         
+    }
+
+    [Serializable]
+    class MedalsInfo
+    {
+        public float platinum;
+        public float gold;
+        public float silver;
     }
 
     Stage level;
@@ -155,8 +166,9 @@ public class SceneToJson : MonoBehaviour
         GameObject HarmOscR       = GameObject.Find("HarmfulOscillators");
         GameObject LightR       = GameObject.Find("Lights");
         GameObject SpringR       = GameObject.Find("Springs");
+        GameObject MedalsObj = GameObject.Find("Medals");
 
-        if(GroundR == null || Start == null || End == null || OscR == null || CPR == null || DP == null || HarmOscR == null)
+        if(GroundR == null || Start == null || End == null || OscR == null || CPR == null || DP == null || HarmOscR == null) //cba to keep updating this
         {
             Debug.LogError("No essestial objects. Check for ground, start, or end");
             return;
@@ -168,8 +180,9 @@ public class SceneToJson : MonoBehaviour
         CreateOscillatorObjects (OscR.transform);
         CreateHarmfulOscillatorObjects(HarmOscR.transform);
         CreateCheckPoints(CPR.transform);
-        // CreateLights(LightR.transform);
-        // CreateSprings(SpringR.transform);
+        CreateMedalsObject(MedalsObj);
+        CreateLights(LightR.transform);
+        CreateSprings(SpringR.transform);
 
         Debug.Log("Loaded!");
         string json = JsonUtility.ToJson(level);
@@ -223,6 +236,15 @@ public class SceneToJson : MonoBehaviour
         }
     }
 
+    private void CreateMedalsObject(GameObject obj)
+    {
+        Medals m = obj.GetComponent<Medals>();
+        Debug.Log(m);
+        level.medalInfo.platinum = m.platinumTime;
+        level.medalInfo.gold = m.goldTime;
+        level.medalInfo.silver= m.silverTime;
+
+    }
     
    private void CreateOscillatorObjects(Transform OscillatorRoot){
         if(OscillatorRoot.childCount == 0){
